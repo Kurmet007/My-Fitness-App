@@ -1,10 +1,57 @@
 {% extends "base.html" %}
 {% block content %}
 <h3>Add Exercise to {{ workout.name }}</h3>
-<form method="post">{% csrf_token %}
-    <input name="name" class="form-control mb-2" placeholder="Exercise name">
-    <input name="calories" type="number" class="form-control mb-2" placeholder="reps">
-    <input name="calories" type="number" class="form-control mb-2" placeholder="sets">
+
+<form method="post">
+    {% csrf_token %}
+
+    <input
+        name="name"
+        class="form-control mb-2"
+        placeholder="Exercise name"
+        required
+    >
+
+    <input
+        name="sets"
+        type="number"
+        class="form-control mb-2"
+        placeholder="Sets"
+        required
+    >
+
+    <input
+        name="reps"
+        type="number"
+        class="form-control mb-2"
+        placeholder="Reps"
+        required
+    >
+
+    <input
+        name="calories"
+        type="number"
+        class="form-control mb-2"
+        placeholder="Calories burned"
+        required
+    >
+
     <button class="btn btn-success">Save</button>
+</form>
+<h3>Add Exercise</h3>
+
+<form method="post">
+    {% csrf_token %}
+
+    <label>Select Exercise Template</label>
+    <select name="template_id" class="form-select mb-3">
+        {% for t in templates %}
+            <option value="{{ t.id }}">
+                {{ t.name }} ({{ t.sets }}x{{ t.reps }})
+            </option>
+        {% endfor %}
+    </select>
+
+    <button class="btn btn-success">Add Exercise</button>
 </form>
 {% endblock %}

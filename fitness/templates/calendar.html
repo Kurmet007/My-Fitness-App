@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">📅 Weekly Calendar</h2>
+
+<div class="container">
+    <div class="row">
+        {% for day, workouts in days.items %}
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white text-center">
+                    {{ day }}
+                </div>
+                <div class="card-body">
+                    {% for workout in workouts %}
+                        <p>
+                            <strong>{{ workout.name }}</strong><br>
+                            <small>{{ workout.total_calories }} cal</small>
+                        </p>
+                    {% empty %}
+                        <p class="text-muted text-center">No workouts</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

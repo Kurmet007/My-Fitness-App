@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Edit Workout</h3>
+
+<form method="post">
+    {% csrf_token %}
+
+    <input
+        name="name"
+        value="{{ workout.name }}"
+        class="form-control mb-2"
+        required
+    >
+
+    <select name="day" class="form-control mb-3">
+        <option value="mon" {% if workout.day == "mon" %}selected{% endif %}>Monday</option>
+        <option value="tue" {% if workout.day == "tue" %}selected{% endif %}>Tuesday</option>
+        <option value="wed" {% if workout.day == "wed" %}selected{% endif %}>Wednesday</option>
+        <option value="thu" {% if workout.day == "thu" %}selected{% endif %}>Thursday</option>
+        <option value="fri" {% if workout.day == "fri" %}selected{% endif %}>Friday</option>
+        <option value="sat" {% if workout.day == "sat" %}selected{% endif %}>Saturday</option>
+        <option value="sun" {% if workout.day == "sun" %}selected{% endif %}>Sunday</option>
+    </select>
+
+    <button class="btn btn-primary w-100">Save Changes</button>
+</form>
+
+{% endblock %}

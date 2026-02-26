@@ -1,8 +1,35 @@
+id="addday"
 {% extends "base.html" %}
 {% block content %}
 <h3>Add Workout</h3>
-<form method="post">{% csrf_token %}
-    <input name="name" class="form-control mb-2" placeholder="Workout name">
-    <button class="btn btn-primary">Save</button>
+
+<form method="post">
+    {% csrf_token %}
+
+    <input
+        name="name"
+        class="form-control mb-2"
+        placeholder="Workout name"
+        required
+    >
+
+    <select
+        name="day"
+        class="form-control mb-3"
+        required
+    >
+        <option value="">Select day</option>
+        <option value="mon">Monday</option>
+        <option value="tue">Tuesday</option>
+        <option value="wed">Wednesday</option>
+        <option value="thu">Thursday</option>
+        <option value="fri">Friday</option>
+        <option value="sat">Saturday</option>
+        <option value="sun">Sunday</option>
+    </select>
+
+    <button class="btn btn-primary w-100">
+        Save Workout
+    </button>
 </form>
 {% endblock %}

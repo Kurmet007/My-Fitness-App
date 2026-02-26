@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>My Exercise Templates</h3>
+
+<a href="{% url 'add_exercise_template' %}" class="btn btn-primary mb-3">
+    New Template
+</a>
+
+<ul class="list-group">
+{% for t in templates %}
+    <li class="list-group-item">
+        <strong>{{ t.name }}</strong>
+        — {{ t.sets }}x{{ t.reps }}
+        ({{ t.calories_burned }} cal)
+    </li>
+{% empty %}
+    <li class="list-group-item text-muted">
+        No templates yet
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

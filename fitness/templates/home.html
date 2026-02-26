@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center">Fitness Tracker</h2>
+
+<a href="/add-workout/" class="btn btn-primary mb-3">Add Workout</a>
+
+{% for workout in workouts %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h5>{{ workout.name }}</h5>
+        <ul>
+            {% for ex in workout.exercises.all %}
+                <li>{{ ex.name }} – {{ ex.calories_burned }} calories</li>
+            {% endfor %}
+        </ul>
+        <a href="/add-exercise/{{ workout.id }}/" class="btn btn-sm btn-success">Add Exercise</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

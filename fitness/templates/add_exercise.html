@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Add Exercise to {{ workout.name }}</h3>
+<form method="post">{% csrf_token %}
+    <input name="name" class="form-control mb-2" placeholder="Exercise name">
+    <input name="calories" type="number" class="form-control mb-2" placeholder="reps">
+    <input name="calories" type="number" class="form-control mb-2" placeholder="sets">
+    <button class="btn btn-success">Save</button>
+</form>
+{% endblock %}
